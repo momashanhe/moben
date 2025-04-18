@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提醒</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      .h-50 {
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="h-50"></div>
+      <div class="alert alert-danger" role="alert">
+        <h1>:) <%= msg %></h1>
+        <h1><a href="<%= url %>" class="btn btn-primary">点击跳转</a></h1>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      label {
+        font-weight: normal;
+      }
+      .panel-body .glyphicon-remove {
+        display: none;
+      }
+      .panel-body:hover .glyphicon-remove {
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-lg-8 col-lg-offset-2">
+          <div class="row">
+            <div class="col-xs-12 text-right">
+              <h2><a href="/auth/logout" class="btn btn-danger">退出</a></h2>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-xs-6">
+              <h2>列表</h2>
+            </div>
+            <div class="col-xs-6 text-right">
+              <h2><a href="/bill/add" class="btn btn-primary">添加</a></h2>
+            </div>
+          </div>
+          <hr>
+          <div>
+            <% if (data) { %>
+              <% data.forEach(bill => { %>
+                <div class="panel panel-<%= bill.type > 0 ? 'success' : 'danger' %>">
+                  <div class="panel-heading"><%=bill.date %></div>
+                  <div class="panel-body">
+                    <div class="col-xs-4"><%=bill.title %></div>
+                    <div class="col-xs-2 text-center">
+                      <span class="label label-<%= bill.type > 0 ? 'success' : 'warning' %>">
+                        <%= bill.type > 0 ? '收入' : '支出' %>
+                      </span>
+                    </div>
+                    <div class="col-xs-2 text-right"><%=bill.cost %></div>
+                    <div class="col-xs-4 text-right">
+                      <a href="/bill/detail/<%=bill.id %>" class="btn btn-xs btn-primary">详情</a>
+                      <a href="/bill/edit/<%=bill.id %>" class="btn btn-xs btn-info">修改</a>
+                      <a href="/bill/delete/<%=bill.id %>" class="btn btn-xs btn-danger">删除</a>
+                    </div>
+                  </div>
+                </div>
+              <% }) %>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
